@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +48,32 @@ public class ProdutoController {
 		public Produtos create(@Valid @RequestBody Produtos produto ) {
 			  return produtoRepository.save(produto);
 		}
-}
+		
+		
+        // atualizando um dado existente no banco de dados
+		@PutMapping(value = "/update/{id}")
+		public ResponseEntity<Produtos> put(@PathVariable(value = "id")long id, @Valid @RequestBody Produtos newProdutos){
+			   Optional<Produtos> oldProduto = produtoRepository.findById(id);
+			   if(oldProduto.isPresent()) {
+				   Produtos produto = oldProduto.get();
+ 				   produto.setId(newProdutos.getId());
+ 				   produto.setDescricao(newProdutos.getDescricao());
+				   produto.setEstoque(newProdutos.getEstoque());
+				   produto.setPreco(newProdutos.getPreco());
+				   produtoRepository.save(produto);
+				   return new ResponseEntity<Produtos>(produto, HttpStatus.OK);
+			   }else {
+				   return new ResponseEntity<Produtos>(HttpStatus.NOT_FOUND);
+			   }
+			
+		}
+		 
+ 
+	  	
+		
+      }	
+
+
 
 
 

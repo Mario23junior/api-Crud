@@ -64,7 +64,7 @@ public class Produtos {
 	public void setProduto(String produto) {
 		this.produto = produto;
 	}
-	 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
