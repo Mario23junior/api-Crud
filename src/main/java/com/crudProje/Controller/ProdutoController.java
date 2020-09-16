@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,6 +68,19 @@ public class ProdutoController {
 			   }
 			
 		}
+		
+		// Deletando produto
+		@DeleteMapping(value = "/delete/{id}")
+		public ResponseEntity<Produtos>Delete(@PathVariable(value = "id")long id){
+			Optional<Produtos> produto = produtoRepository.findById(id);
+			if(produto.isPresent()) {
+				produtoRepository.delete(produto.get());
+				return new ResponseEntity<Produtos>(HttpStatus.OK);
+			}else {
+				return new ResponseEntity<Produtos>(HttpStatus.NOT_FOUND);
+			}
+		}
+		
 		 
  
 	  	
