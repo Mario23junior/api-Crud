@@ -6,7 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-
+import javax.validation.constraints.NotNull;
+ 
 @Entity
 public class Produtos {
       
@@ -15,19 +16,19 @@ public class Produtos {
 	private long id;
 	
 	@Column(nullable = false)
-	@NotEmpty
+	@NotEmpty(message = "(campo.descricao.obrigatorio)")
 	private String descricao;
 	
 	@Column(nullable = false)
-	@NotEmpty
+	@NotNull(message = "(campo.estoque.obrigatorio)")
 	private int estoque;
 	
 	@Column(nullable = false)
-	@NotEmpty
+ 	@NotNull(message = "(campo.preco.obrigatorio)")
 	private double preco;
 	
 	@Column(nullable = false)
-	@NotEmpty
+	@NotEmpty(message = "(campo.produto.obrigatorio)")
 	private String produto;
 
 	public Long getId() {

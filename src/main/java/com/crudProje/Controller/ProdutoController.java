@@ -54,7 +54,7 @@ public class ProdutoController {
 	
 		//salvando produtos no banco de dados
 		@PostMapping(value = "/save")
-		public Produtos create(@Valid @RequestBody Produtos produto ) {
+		public Produtos create(@RequestBody @Valid Produtos produto ) {
 			  return produtoRepository.save(produto);
 		}
 		

@@ -14,10 +14,10 @@ public class internacionalizacaoValid {
 	  @Bean
 	  public MessageSource messageSource() {
 			   ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-			   messageSource.setBasename("messagesValid");
+			   messageSource.setBasename("classpath:messagesValid");
 			   messageSource.setDefaultEncoding("ISO-8859-1");
 			   messageSource.setDefaultLocale(Locale.getDefault());
-			   return messageSource();
+			   return messageSource;
 	  }
 	  
 	  @Bean
