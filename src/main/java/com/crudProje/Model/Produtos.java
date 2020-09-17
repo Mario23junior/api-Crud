@@ -16,19 +16,19 @@ public class Produtos {
 	private long id;
 	
 	@Column(nullable = false)
-	@NotEmpty(message = "(campo.descricao.obrigatorio)")
+	@NotEmpty(message = "{campo.descricao.obrigatorio}")
 	private String descricao;
 	
 	@Column(nullable = false)
-	@NotNull(message = "(campo.estoque.obrigatorio)")
+	@NotNull(message = "{campo.estoque.obrigatorio}")
 	private int estoque;
 	
 	@Column(nullable = false)
- 	@NotNull(message = "(campo.preco.obrigatorio)")
+ 	@NotNull(message = "{campo.preco.obrigatorio}")
 	private double preco;
 	
 	@Column(nullable = false)
-	@NotEmpty(message = "(campo.produto.obrigatorio)")
+	@NotEmpty(message = "{campo.produto.obrigatorio}")
 	private String produto;
 
 	public Long getId() {
